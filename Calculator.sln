@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32630.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationModel", "CalculationModel\CalculationModel.csproj", "{CAF65DBD-EE47-487F-BA9C-A9BD47C4BBA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{F28A2F54-0C34-4EF2-AE9A-14FFFD83FFA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CAF65DBD-EE47-487F-BA9C-A9BD47C4BBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAF65DBD-EE47-487F-BA9C-A9BD47C4BBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAF65DBD-EE47-487F-BA9C-A9BD47C4BBA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F28A2F54-0C34-4EF2-AE9A-14FFFD83FFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F28A2F54-0C34-4EF2-AE9A-14FFFD83FFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F28A2F54-0C34-4EF2-AE9A-14FFFD83FFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F28A2F54-0C34-4EF2-AE9A-14FFFD83FFA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
