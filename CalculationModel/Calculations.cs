@@ -10,12 +10,13 @@ namespace CalculationModel
         public string SecondOperand { get; set; } = string.Empty;
         public string Operation { get; set; } = string.Empty;
         public string Result { get; private set; } = string.Empty;
+        private bool isAtomar;
 
         public Calculations() {}
         public Calculations(string firstOperand, string secondOperand, string operation) 
         {
             CheckOperand(firstOperand);
-            CheckOperand(secondOperand);
+            if (!isAtomar) CheckOperand(secondOperand);
             CheckOperation(operation);
             FirstOperand = firstOperand;
             SecondOperand = secondOperand;
@@ -27,24 +28,51 @@ namespace CalculationModel
             CheckOperand(FirstOperand);
             CheckOperand(SecondOperand);
             CheckOperation(Operation);
-            switch (Operation)
+
+            try
             {
-                case "+":
-                    Result = (Convert.ToDouble(FirstOperand) + Convert.ToDouble(SecondOperand)).ToString();
-                    break;
-                case "-":
-                    Result = (Convert.ToDouble(FirstOperand) - Convert.ToDouble(SecondOperand)).ToString();
-                    break;
-                case "*":
-                    Result = (Convert.ToDouble(FirstOperand) * Convert.ToDouble(SecondOperand)).ToString();
-                    break;
-                case "/":
-                    if (SecondOperand == "0") { Result = "Error: numerator is 0"; break; }
-                    Result = (Convert.ToDouble(FirstOperand) / Convert.ToDouble(SecondOperand)).ToString();
-                    break;
-                default:
-                    Result = "Unknown error";
-                    break;
+                switch (Operation)
+                {
+                    case "+":
+                        Result = checked(Convert.ToDouble(FirstOperand) + Convert.ToDouble(SecondOperand)).ToString();
+                        break;
+                    case "-":
+                        Result = checked(Convert.ToDouble(FirstOperand) - Convert.ToDouble(SecondOperand)).ToString();
+                        break;
+                    case "*":
+                        Result = checked(Convert.ToDouble(FirstOperand) * Convert.ToDouble(SecondOperand)).ToString();
+                        break;
+                    case "/":
+                        if (SecondOperand == "0")
+                        {
+                            Result = "Error: numerator is 0";
+                            throw new ArgumentException();
+                        }
+                        Result = checked(Convert.ToDouble(FirstOperand) / Convert.ToDouble(SecondOperand)).ToString();
+                        break;
+                    case "sqrt":
+                        double x = Convert.ToDouble(FirstOperand);
+                        if (x < 0)
+                        {
+                            Result = "Error: number is less than zero";
+                            throw new ArgumentException();
+                        }
+                        Result = Math.Sqrt(x).ToString();
+                        break;
+                    default:
+                        Result = "Unknown error";
+                        throw new Exception();
+                }
+            }
+            catch (OverflowException) 
+            {
+                Result = "Error: overflow";
+                throw;
+            }
+            catch
+            {
+                Result = "Unknown error";
+                throw;
             }
         }
 
@@ -56,6 +84,10 @@ namespace CalculationModel
                 case "-":
                 case "*":
                 case "/":
+                    isAtomar = false;
+                    break;
+                case "sqrt":
+                    isAtomar = true;
                     break;
                 default:
                     Result = "Error: operation is not correct";
