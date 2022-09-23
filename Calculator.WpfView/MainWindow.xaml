@@ -28,9 +28,10 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Grid.ColumnSpan="5" Text="{Binding Display}" VerticalAlignment="Center" Margin="10,0,10,0" Height="30" Padding="0,6,0,0"/>
+        <TextBox Grid.ColumnSpan="5" Text="{Binding Display, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="10,0,10,0" Height="30" Padding="0,6,0,0"/>
         <TextBox Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Expression}" VerticalAlignment="Center" Margin="10,000,5,0" Width="296" Height="30" Padding="0,6,0,0"/>
-        <Button Content="7" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="0"/>
+        <Button Content="7" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="0"
+                Command="{Binding PressDigit}" CommandParameter="7"/>
         <Button Content="8" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="1"/>
         <Button Content="9" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="2"/>
         <Button Content="4" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="0"/>

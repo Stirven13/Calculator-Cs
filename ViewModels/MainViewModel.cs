@@ -10,7 +10,7 @@ namespace ViewModels
     public class MainViewModel: ViewModelBase
     {
 
-        private string display = "7+8";
+        private string display = "0";
         private readonly string comma = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToString();
         public string Comma => comma;
 
@@ -24,7 +24,7 @@ namespace ViewModels
             }
         }
 
-        private string expression = "48549844.555";
+        private string expression = "0";
 
 
         public string Expression
@@ -38,5 +38,16 @@ namespace ViewModels
             }
         }
 
+        public Command<string> PressDigit { get; }
+
+        public MainViewModel()
+        {
+            PressDigit = new Command<string>(pressDigit);
+        }
+
+        private void pressDigit(string obj)
+        {
+            Display = Display + obj;
+        }
     }
 }
