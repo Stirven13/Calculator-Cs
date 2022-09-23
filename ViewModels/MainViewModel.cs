@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Globalization;
 
 namespace ViewModels
 {
     public class MainViewModel: ViewModelBase
     {
 
-        private string display = "display";
+        private string display = "7+8";
+        private readonly string comma = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToString();
+        public string Comma => comma;
+
 
         public string Display {
             get => display;
@@ -20,7 +24,7 @@ namespace ViewModels
             }
         }
 
-        private string expression = "expression";
+        private string expression = "48549844.555";
 
 
         public string Expression

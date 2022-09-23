@@ -26,7 +26,7 @@ namespace CalculationModel
         public void GetResult() 
         {
             CheckOperand(FirstOperand);
-            CheckOperand(SecondOperand);
+            if (!isAtomar) CheckOperand(SecondOperand);
             CheckOperation(Operation);
 
             try
