@@ -32,25 +32,40 @@
         <TextBox Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Expression}" VerticalAlignment="Center" Margin="10,000,5,0" Width="296" Height="30" Padding="0,6,0,0"/>
         <Button Content="7" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="0"
                 Command="{Binding PressDigit}" CommandParameter="7"/>
-        <Button Content="8" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="1"/>
-        <Button Content="9" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="2"/>
-        <Button Content="4" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="0"/>
-        <Button Content="5" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="1"/>
-        <Button Content="6" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="2"/>
-        <Button Content="1" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="0"/>
-        <Button Content="2" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="1"/>
-        <Button Content="3" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="2"/>
-        <Button Content="+/-" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="0"/>
-        <Button Content="0" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="1"/>
-        <Button Content="{Binding Comma}" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="2"/>
-        <Button Content="🠔" Style="{StaticResource DigitBtn}" Grid.Row="1" Grid.Column="4"/>
-        <Button Content="C" Style="{StaticResource DigitBtn}" Grid.Row="1" Grid.Column="3"/>
-        <Button Content="+" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="3"/>
+        <Button Content="8" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="1"
+                Command="{Binding PressDigit}" CommandParameter="8"/>
+        <Button Content="9" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="2"
+                Command="{Binding PressDigit}" CommandParameter="9"/>
+        <Button Content="4" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="0"
+                Command="{Binding PressDigit}" CommandParameter="4"/>
+        <Button Content="5" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="1"
+                Command="{Binding PressDigit}" CommandParameter="5"/>
+        <Button Content="6" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="2"
+                Command="{Binding PressDigit}" CommandParameter="6"/>
+        <Button Content="1" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="0"
+                Command="{Binding PressDigit}" CommandParameter="1"/>
+        <Button Content="2" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="1"
+                Command="{Binding PressDigit}" CommandParameter="2"/>
+        <Button Content="3" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="2"
+                Command="{Binding PressDigit}" CommandParameter="3"/>
+        <Button Content="+/-" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="0"
+                Command="{Binding PressPlusMinus}"/>
+        <Button Content="0" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="1"
+                Command="{Binding PressDigit}" CommandParameter="0"/>
+        <Button Content="{Binding Comma}" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="2"
+                Command="{Binding PressComma}" />
+        <Button Content="🠔" Style="{StaticResource DigitBtn}" Grid.Row="1" Grid.Column="3"
+                Command="{Binding PressBackspace}"/>
+        <Button Content="C" Style="{StaticResource DigitBtn}" Grid.Row="1" Grid.Column="4"
+                Command="{Binding PressClear}"/>
+        <Button Content="+" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="3"
+                Command="{Binding PressOperationBtn}" CommandParameter="+"/>
         <Button Content="-" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="3"/>
         <Button Content="*" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="3"/>
         <Button Content="/" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="3"/>
         <Button Content="√" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="4"/>
-        <Button Content="=" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="4"/>
+        <Button Content="=" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="4"
+                Command="{Binding PressEqual}"/>
         <Button Content="?" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="4"/>
         <Button Content="?" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="4"/>
 

@@ -17,11 +17,17 @@ namespace ViewModels
         private Func<bool> canExecute;
 
         private Action execute;
+        private Command pressEqual;
 
         public Command(Action execute, Func<bool> canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;
+        }
+
+        public Command(Command pressEqual)
+        {
+            this.pressEqual = pressEqual;
         }
 
         public void Execute(object parameter)
