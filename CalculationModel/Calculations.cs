@@ -8,15 +8,24 @@ namespace CalculationModel
     {
         public string FirstOperand { get; set; } = string.Empty;
         public string SecondOperand { get; set; } = string.Empty;
-        public string Operation { get; set; } = string.Empty;
+        private string operation = string.Empty;
+        public string Operation
+        { 
+            get => operation;
+            set 
+            {
+                CheckOperation(value);
+                operation = value;
+            } 
+        }
         public string Result { get; private set; } = string.Empty;
-        private bool isAtomar;
+        public bool IsAtomar { get; private set; }
 
         public Calculations() {}
         public Calculations(string firstOperand, string secondOperand, string operation) 
         {
             CheckOperand(firstOperand);
-            if (!isAtomar) CheckOperand(secondOperand);
+            if (!IsAtomar) CheckOperand(secondOperand);
             CheckOperation(operation);
             FirstOperand = firstOperand;
             SecondOperand = secondOperand;
@@ -26,7 +35,7 @@ namespace CalculationModel
         public void GetResult() 
         {
             CheckOperand(FirstOperand);
-            if (!isAtomar) CheckOperand(SecondOperand);
+            if (!IsAtomar) CheckOperand(SecondOperand);
             CheckOperation(Operation);
 
             try
@@ -50,7 +59,7 @@ namespace CalculationModel
                         }
                         Result = checked(Convert.ToDouble(FirstOperand) / Convert.ToDouble(SecondOperand)).ToString();
                         break;
-                    case "sqrt":
+                    case "√":
                         double x = Convert.ToDouble(FirstOperand);
                         if (x < 0)
                         {
@@ -84,10 +93,10 @@ namespace CalculationModel
                 case "-":
                 case "*":
                 case "/":
-                    isAtomar = false;
+                    IsAtomar = false;
                     break;
-                case "sqrt":
-                    isAtomar = true;
+                case "√":
+                    IsAtomar = true;
                     break;
                 default:
                     Result = "Error: operation is not correct";

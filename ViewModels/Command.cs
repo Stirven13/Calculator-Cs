@@ -53,15 +53,29 @@ namespace ViewModels
 
         private Action<T> execute;
 
-        public Command(Action<T> execute, Func<T, bool> canExecute = null)
+        private IErrorHandler errorHandler;
+
+        public Command(Action<T> execute, Func<T, bool> canExecute = null, IErrorHandler errorHandler = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;
+            this.errorHandler = errorHandler;
         }
 
         public void Execute(object parameter)
         {
-            if (CanExecute(null) && parameter != null) execute.Invoke((T)parameter);
+            if (CanExecute(null) && parameter != null) 
+            {
+                try
+                {
+                    execute.Invoke((T)parameter);
+                }
+                catch (Exception exception)
+                {
+                    if (errorHandler != null) errorHandler.ErrorHandle(exception);
+                    else throw;
+                }
+            }
         }
 
         public void RaiseCanExecuteChanged()

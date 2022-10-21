@@ -60,10 +60,14 @@
                 Command="{Binding PressClear}"/>
         <Button Content="+" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="3"
                 Command="{Binding PressOperationBtn}" CommandParameter="+"/>
-        <Button Content="-" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="3"/>
-        <Button Content="*" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="3"/>
-        <Button Content="/" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="3"/>
-        <Button Content="√" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="4"/>
+        <Button Content="-" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="3"
+                Command="{Binding PressOperationBtn}" CommandParameter="-"/>
+        <Button Content="*" Style="{StaticResource DigitBtn}" Grid.Row="4" Grid.Column="3"
+                Command="{Binding PressOperationBtn}" CommandParameter="*"/>
+        <Button Content="/" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="3"
+                Command="{Binding PressOperationBtn}" CommandParameter="/"/>
+        <Button Content="√" Style="{StaticResource DigitBtn}" Grid.Row="2" Grid.Column="4"
+                Command="{Binding PressOperationBtn}" CommandParameter="√"/>
         <Button Content="=" Style="{StaticResource DigitBtn}" Grid.Row="5" Grid.Column="4"
                 Command="{Binding PressEqual}"/>
         <Button Content="?" Style="{StaticResource DigitBtn}" Grid.Row="3" Grid.Column="4"/>

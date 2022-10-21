@@ -72,8 +72,9 @@ namespace ViewModels
                 Expression = calculations.Result;
                 Display = $"{Display} {calculations.SecondOperand} = {calculations.Result}";
             }
-            catch (Exception e)
+            finally
             {
+                lastOperation = "";
             }
         }
 
@@ -81,19 +82,38 @@ namespace ViewModels
 
         private void pressOperationBtn(string obj)
         {
-            try
+            if (lastOperation == obj) return;
+            var lastAtomar = calculations.IsAtomar;
+            calculations = new Calculations { Operation = obj };
+            if (Display.Contains('=')) 
             {
-                if (string.IsNullOrEmpty(lastOperation))
+                calculations.FirstOperand = Expression;
+                Display = $"{Expression} {obj} ";
+                Expression = "0";
+            }
+            else if (lastAtomar) 
+            {
+                Display = calculations.IsAtomar
+                    ? Display.Replace(lastOperation, obj)
+                    : Display.Replace(lastOperation, "").Trim('(', ')') + " " + obj;
+            } 
+            else
+            {
+                if (display.Length == 0)
                 {
-                    calculations.FirstOperand = Expression;
-                    calculations.Operation = obj;
-                    lastOperation = obj;
-                    Display = $"{Expression} {obj} ";
-                    Expression = "0";
+                    Display = calculations.IsAtomar
+                        ? $"{obj}({Expression})"
+                        : $"{Expression} {obj}";
+                }
+                else
+                {
+                    display = display.Length > 0 ? display.Replace(lastOperation, "").TrimEnd() : display;
+                    Display = calculations.IsAtomar
+                        ? $"{obj}({Expression})"
+                        : Display + " " + obj;
                 }
             }
-            catch (Exception e) { }
-            
+            lastOperation = obj;
         }
 
         private void pressClear()
